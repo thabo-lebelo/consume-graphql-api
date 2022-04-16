@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { gql, useMutation } from '@apollo/client';
 
-const ADD_BLOG = gql`
+const ADD_POST = gql`
     mutation AddPost($title: String!, $body: String!, $author_id: ID!) {
-        createBlog(title: $title, body: $body, author_id: $author_id) {
+        createPost(title: $title, body: $body, author_id: $author_id) {
             Author {
                 name
             }
@@ -18,7 +18,7 @@ const Create = () => {
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
     const [author_id, setAuthor] = useState(1);
-    const [addPost, { data, loading, error }] = useMutation(ADD_BLOG);
+    const [addPost, { data, loading, error }] = useMutation(ADD_POST);
 
     return (
         <div className="create">

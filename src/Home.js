@@ -1,9 +1,9 @@
-// import { useState } from "react";
+import { useState } from "react";
 import { useQuery, gql } from "@apollo/client";
 
-const BLOGS_QUERY = gql`
+const POSTS_QUERY = gql`
     query {
-        allBlogs {
+        allPosts {
             title
             body
             Author {
@@ -15,9 +15,9 @@ const BLOGS_QUERY = gql`
 
 const Home = () => {
 
-    const { loading, error, data } = useQuery(BLOGS_QUERY);
+    const { loading, error, data } = useQuery(POSTS_QUERY);
 
-    // const [blogs, setBlogs] = useState([
+    // const [posts, setPosts] = useState([
     //     { title: "Software development", body: "The best programming...", author: "Thabo", id: 1 },
     //     { title: "Basic accounting rules", body: "Reconciliation is...", author: "Thabang", id: 2 },
     //     { title: "Soccer tournament", body: "Made it to the final...", author: "Nkosi", id: 3 }
@@ -25,20 +25,20 @@ const Home = () => {
 
     return (
         <div className="home">
-            {/* {blogs.map((blog) => (
-                <div className="blog-preview" key={blog.id}>
-                    <h2>{blog.title}</h2>
-                    <p>Written by {blog.author}</p>
+            {/* {posts.map((post) => (
+                <div className="blog-preview" key={post.id}>
+                    <h2>{post.title}</h2>
+                    <p>Written by {post.author}</p>
                 </div>
             ))} */}
             {error && <p>Error :(</p>}
             {loading && <p>Loading...</p>}
-            {data && Object.values(data).map(blogs => (
-                blogs.map((blog, index) => (
+            {data && Object.values(data).map(posts => (
+                posts.map((post, index) => (
                     
                     <div className="blog-preview" key={index}>
-                        <h2>{blog.title}</h2>
-                        <p>Written by {blog.Author.name}</p>
+                        <h2>{post.title}</h2>
+                        <p>Written by {post.Author.name}</p>
                     </div>
                 ))
             ))}
