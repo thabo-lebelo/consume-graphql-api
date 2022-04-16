@@ -22,26 +22,27 @@ const Create = () => {
 
     return (
         <div className="create">
-            <h2>Add a New blog</h2>
+            <h2>Post Details</h2>
             <form onSubmit={e => {
                 e.preventDefault();
                 addPost({ variables: { title, body, author_id } });
                 history.push('/'); // got to home page
             }}>
-                <label>Blog title:</label>
+                <label>Post title:</label>
                 <input type="text" required value={title}
                     onChange={(e) => setTitle(e.target.value)} />
-                <label>Blog body:</label>
+                <label>Post body:</label>
                 <textarea required value={body}
                     onChange={(e) => setBody(e.target.value)}></textarea>
-                <label>Blog author:</label>
+                <label>Post author:</label>
                 <select value={author_id}
                     onChange={(e) => setAuthor(e.target.value)}>
                     <option value="1">Thabo</option>
                     <option value="2">Thabang</option>
                     <option value="3">Nkosi</option>
                 </select>
-                <button>Add Blog</button>
+                <br/>
+                <button>Upload</button>
             </form>
         </div>
     );
